@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:59:40 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/22 19:59:03 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/22 22:25:53 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,26 @@ void	rra(t_data *data)
 	}
 }
 
-void	rra(t_data *data)
+void	rrb(t_data *data)
 {
 	t_list	*aux;
 	t_list	*first;
 	t_list	*last;
 
-	if (ft_lstsize(data->a) <= 1)
+	if (ft_lstsize(data->b) <= 1)
 		return ;
-	last = data->a;
+	last = data->b;
 	while (last)
 	{
 		if (last->next->next == NULL)
 			break ;
 		last = last->next;
 	}
-	first = ft_lstlast(data->a);
-	aux = data->a;
-	data->a = first;
-	data->a->next = aux;
-	aux = data->a;
+	first = ft_lstlast(data->b);
+	aux = data->b;
+	data->b = first;
+	data->b->next = aux;
+	aux = data->b;
 	while (aux)
 	{
 		if (aux == last)

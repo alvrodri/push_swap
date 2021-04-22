@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:36:44 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/22 19:03:02 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/22 22:26:43 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	parse_args(&data, argv + 1);
-	rra(&data);
-	stack_print(data.a);
 	list_free(&data);
-	system("leaks a.out");
 	return (0);
 }
