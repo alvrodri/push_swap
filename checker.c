@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/14 10:42:23 by alvrodri          #+#    #+#             */
-/*   Updated: 2020/01/23 14:00:58 by alvrodri         ###   ########.fr       */
+/*   Created: 2021/04/22 15:36:44 by alvrodri          #+#    #+#             */
+/*   Updated: 2021/04/22 16:35:49 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./push_swap.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_exit(int status)
 {
-	t_list *new;
+	exit(status);
+}
 
-	if (!(new = malloc(sizeof(t_list))))
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+int		main(int argc, char **argv)
+{
+	t_data	data;
+
+	parse_args(&data, argv + 1);
+	return (0);
 }
