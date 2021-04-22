@@ -6,11 +6,11 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:11:39 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/22 18:45:07 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/22 22:46:25 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./push_swap.h"
+#include "../includes/push_swap.h"
 
 void	pa(t_data *data)
 {

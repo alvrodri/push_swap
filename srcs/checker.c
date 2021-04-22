@@ -6,11 +6,11 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:36:44 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/22 19:03:02 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/22 22:55:15 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./push_swap.h"
+#include "../includes/push_swap.h"
 
 void	list_free(t_data *data)
 {
@@ -42,10 +42,8 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	(void)argc;
 	parse_args(&data, argv + 1);
-	rra(&data);
-	stack_print(data.a);
 	list_free(&data);
-	system("leaks a.out");
 	return (0);
 }
