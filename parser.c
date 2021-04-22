@@ -6,20 +6,20 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:36:30 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/22 16:35:48 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/22 18:44:36 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int		is_number(char *str)
+int	is_number(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (i != 0 && str[i] == '-')
+		if ((i != 0 && str[i] == '-') || (str[i] == '-' && ft_strlen(str) == 1))
 			return (0);
 		if (!ft_isdigit(str[i]) && str[i] != '-')
 			return (0);
@@ -33,9 +33,47 @@ void	split_free(char	**split)
 	int	i;
 
 	i = 0;
-	while (split[i++])
+	while (split[i])
+	{
 		free(split[i]);
+		i++;
+	}
 	free(split);
+}
+
+void	check_duplicates(t_data *data)
+{
+	t_list	*curr;
+	t_list	*aux;
+
+	curr = data->a;
+	while (curr)
+	{
+		aux = data->a;
+		while (aux)
+		{
+			if (((t_stack *)aux->content)->number == ((t_stack *)curr->content)
+				->number && (aux != curr))
+				ft_exit(data, printf("'%d' is duplicated.\n",
+						((t_stack *)curr->content)->number));
+			aux = aux->next;
+		}
+		curr = curr->next;
+	}
+}
+
+void	allocate_number(t_data *data, int number)
+{
+	t_list	*list;
+	t_stack	*stack;
+
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	stack->number = number;
+	list = ft_lstnew(stack);
+	if (data->a == NULL)
+		data->a = list;
+	else
+		ft_lstadd_back(&data->a, list);
 }
 
 void	parse_args(t_data *data, char **argv)
@@ -52,14 +90,12 @@ void	parse_args(t_data *data, char **argv)
 		while (split[j])
 		{
 			if (!is_number(split[j]))
-				ft_exit(printf("'%s' is not a number.\n", split[j]));
-			printf("|%d|\n", ft_atoi(split[j]));
-			/*
-			 * Agregar a la lista. TODO
-			 */
+				ft_exit(data, printf("'%s' is not a number.\n", split[j]));
+			allocate_number(data, ft_atoi(split[j]));
 			j++;
 		}
 		split_free(split);
 		i++;
 	}
+	check_duplicates(data);
 }

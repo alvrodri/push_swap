@@ -1,41 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_instruction.c                                 :+:      :+:    :+:   */
+/*   rotate_instruction.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/22 15:11:39 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/22 18:45:07 by alvrodri         ###   ########.fr       */
+/*   Created: 2021/04/22 18:47:48 by alvrodri          #+#    #+#             */
+/*   Updated: 2021/04/22 18:59:17 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-void	pa(t_data *data)
+void	ra(t_data *data)
 {
-	t_list	*aux_a;
-	t_list	*aux_b;
+	t_list	*aux;
+	t_list	*last;
 
-	if (ft_lstsize(data->b) <= 0)
+	if (ft_lstsize(data->a) <= 1)
 		return ;
-	aux_a = data->a;
-	aux_b = data->b->next;
-	data->a = data->b;
-	data->a->next = aux_a;
-	data->b = aux_b->next;
+	last = data->a;
+	aux = data->a->next;
+	data->a = aux;
+	ft_lstlast(data->a)->next = last;
+	last->next = NULL;
 }
 
-void	pb(t_data *data)
+void	rb(t_data *data)
 {
-	t_list	*aux_a;
-	t_list	*aux_b;
+	t_list	*aux;
+	t_list	*last;
 
-	if (ft_lstsize(data->a) <= 0)
+	if (ft_lstsize(data->a) <= 1)
 		return ;
-	aux_a = data->a->next;
-	aux_b = data->b;
-	data->b = data->a;
-	data->b->next = aux_b;
-	data->a = aux_a;
+	last = data->b;
+	aux = data->b->next;
+	data->b = aux;
+	ft_lstlast(data->b)->next = last;
+	last->next = NULL;
+}
+
+void	rr(t_data *data)
+{
+	ra(data);
+	rb(data);
 }

@@ -6,7 +6,7 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:06:27 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/22 15:52:35 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/22 19:00:17 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,15 @@ void			sb(t_data *data);
 void			ss(t_data *data);
 void			pa(t_data *data);
 void			pb(t_data *data);
+void			ra(t_data *data);
+void			rb(t_data *data);
+void			rr(t_data *data);
+void			rra(t_data *data);
+void			rrb(t_data *data);
+void			rrr(t_data *data);
 
-void			ft_exit(int status);
+void			ft_exit(t_data *data, int status);
+void			stack_print(t_list *list);
 
 void			parse_args(t_data *data, char **argv);
 
