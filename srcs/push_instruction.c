@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:11:39 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/23 16:42:33 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/23 16:58:32 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	pa(t_data *data)
 	aux_b = data->b->next;
 	data->a = data->b;
 	data->a->next = aux_a;
-	data->b = aux_b->next;
+	if (aux_b)
+		data->b = aux_b->next;
+	else
+		data->b = NULL;
 }
 
 void	pb(t_data *data)
