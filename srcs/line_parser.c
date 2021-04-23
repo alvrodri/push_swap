@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:49:30 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/23 16:32:48 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:00:30 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	parse_line(t_data *data)
 		free(data->line);
 		read = get_next_line(0, &data->line);
 	}
-	if (check_order(data))
+	if (check_order(data) && ft_lstsize(data->b) <= 0)
 		printf("OK\n");
 	else
 		printf("KO\n");
