@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:36:44 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/22 22:58:16 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:51:34 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	parse_args(&data, argv + 1);
+	parse_line(&data);
 	list_free(&data);
+	system("leaks checker");
 	return (0);
 }

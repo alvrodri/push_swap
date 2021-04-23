@@ -6,7 +6,7 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:06:27 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/22 22:55:01 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/23 16:42:34 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "../libft/libft.h"
+# include "../get_next_line/get_next_line.h"
 
 typedef	struct	s_stack
 {
@@ -26,6 +27,7 @@ typedef struct	s_data
 {
 	t_list		*a;
 	t_list		*b;
+	char		*line;
 }				t_data;
 
 void			sa(t_data *data);
@@ -44,6 +46,9 @@ void			ft_exit(t_data *data, int status);
 void			stack_print(t_list *list);
 
 void			parse_args(t_data *data, char **argv);
+void			parse_line(t_data *data);
+
+int				check_order(t_data *data);
 
 int				main(int argc, char **argv);
 

@@ -1,39 +1,32 @@
-CHECKER_SRCS = ./srcs/checker.c \
-			   ./srcs/parser.c \
-			   ./srcs/print.c \
-			   ./srcs/swap_instruction.c ./srcs/push_instruction.c \
-			   ./srcs/rotate_instruction.c ./srcs/reverse_rotate_instruction.c
+SRCS	=	srcs/checker.c \
+			srcs/parser.c srcs/line_parser.c \
+			srcs/print.c \
+			srcs/push_instruction.c \
+			srcs/swap_instruction.c \
+			srcs/rotate_instruction.c \
+			srcs/reverse_rotate_instruction.c \
+			srcs/validation.c
+GNL		=	./get_next_line/get_next_line.c \
+			./get_next_line/get_next_line_utils.c
 
-PUSH_SWAP_SRCS =
+NAME = checker
+
+OBJS = ${SRCS:.c=.o}
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 
-CHECKER_OBJS = ${CHECKER_SRCS:.c=.o}
-PUSH_SWAP_OBJS = $(PUSH_SWAP_SRCS:.c=.o)
+SANITIZE = -g3 -fsanitize=address
 
-LIBFT = -L ./libft/ -l ft
-
-all:	checker push_swap
-
-checker:	${CHECKER_OBJS}
-	make -C ./libft/
-	$(CC) $(CFLAGS) $(LIBFT) $(CHECKER_OBJS) -o checker
-
-push_swap:
-	make -C ./libft/
-	$(CC) $(CFLAGS) $(LIBFT) $(PUSH_SWAP_OBJS) -o push_swap
-
+${NAME}:	${OBJS}
+			make bonus -C ./libft/
+			gcc ${GNL} ${OBJS} -L ./libft/ -l ft -o ${NAME}
+all:		${NAME}
 clean:
-	rm -rf $(CHECKER_OBJS) $(PUSH_SWAP_OBJS)
-	make clean -C ./libft/
-
-fclean:
-	$(clean)
-	rm -rf checker
-	rm -rf push_swap
-	make fclean -C ./libft/
-
-re:	fclean all
-
-.PHONY:	all checker push_swap clean fclean re
+			rm -f ${OBJS}
+			make clean -C ./libft
+fclean:		clean
+			rm -f ${NAME}
+			make fclean -C ./libft
+re:			fclean all
+.PHONY:		all clean fclean re

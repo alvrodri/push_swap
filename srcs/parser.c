@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:36:30 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/22 22:46:15 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:52:55 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,7 @@ void	parse_args(t_data *data, char **argv)
 		split_free(split);
 		i++;
 	}
+	if (ft_lstsize(data->a) <= 0)
+		ft_exit(data, printf("You have to input at least one number.\n"));
 	check_duplicates(data);
 }

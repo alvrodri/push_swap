@@ -1,47 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_instruction.c                               :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/22 18:47:48 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/23 16:40:57 by alvrodri         ###   ########.fr       */
+/*   Created: 2021/04/23 11:38:14 by alvrodri          #+#    #+#             */
+/*   Updated: 2021/04/23 11:47:47 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ra(t_data *data)
+int	check_order(t_data *data)
 {
-	t_list	*aux;
+	t_list	*curr;
 	t_list	*last;
 
-	if (ft_lstsize(data->a) <= 1)
-		return ;
+	curr = data->a;
 	last = data->a;
-	aux = data->a->next;
-	data->a = aux;
-	ft_lstlast(data->a)->next = last;
-	last->next = NULL;
-}
-
-void	rb(t_data *data)
-{
-	t_list	*aux;
-	t_list	*last;
-
-	if (ft_lstsize(data->b) <= 1)
-		return ;
-	last = data->b;
-	aux = data->b->next;
-	data->b = aux;
-	ft_lstlast(data->b)->next = last;
-	last->next = NULL;
-}
-
-void	rr(t_data *data)
-{
-	ra(data);
-	rb(data);
+	while (curr)
+	{
+		if (((t_stack *)last->content)->number
+			> ((t_stack *)curr->content)->number)
+			return (0);
+		last = curr;
+		curr = curr->next;
+	}
+	return (1);
 }
