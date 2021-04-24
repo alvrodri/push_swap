@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:36:44 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/23 16:58:32 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/24 11:09:15 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	(void)argc;
+	data.a = NULL;
+	data.b = NULL;
 	parse_args(&data, argv + 1);
 	parse_line(&data);
 	list_free(&data);
-	system("leaks checker");
 	return (0);
 }

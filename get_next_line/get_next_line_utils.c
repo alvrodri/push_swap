@@ -6,7 +6,7 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 12:02:47 by alvrodri          #+#    #+#             */
-/*   Updated: 2020/02/04 13:57:53 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/24 11:08:58 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ char	*ft_strdup(const char *s1)
 	char		*cpy;
 
 	len = ft_strlen(s1);
-	if (!(cpy = (char *)malloc((len + 1) * sizeof(const char))))
+	if (len <= 0)
+		return (NULL);
+	if (!(cpy = (char *)malloc((len + 1) * sizeof(char))))
 		return (NULL);
 	i = 0;
 	while (s1[i])
