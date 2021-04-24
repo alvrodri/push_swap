@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:49:30 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/23 17:01:31 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/24 11:56:19 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,37 @@
 
 int	is_instruction(char *str)
 {
+	if (str[0] == '\0')
+		return (1);
+	str = ft_strtrim(str, " ");
 	if ((ft_strnstr(str, "pa", 2)
 		|| ft_strnstr(str, "pb", 2)) && ft_strlen(str) == 2)
+	{
+		free(str);
 		return (1);
+	}
 	if ((ft_strnstr(str, "sa", 2)
 		|| ft_strnstr(str, "sb", 2)
 		|| ft_strnstr(str, "ss", 2)) && ft_strlen(str) == 2)
+	{
+		free(str);
 		return (1);
+	}
 	if ((ft_strnstr(str, "ra", 2)
 		|| ft_strnstr(str, "rb", 2)
 		|| ft_strnstr(str, "rr", 2)) && ft_strlen(str) == 2)
+	{
+		free(str);
 		return (1);
+	}
 	if ((ft_strnstr(str, "rra", 3)
 		|| ft_strnstr(str, "rrb", 3)
 		|| ft_strnstr(str, "rrr", 3)) && ft_strlen(str) == 3)
+	{
+		free(str);
 		return (1);
+	}
+	free(str);
 	return (0);
 }
 
@@ -39,26 +55,26 @@ void	execute_instruction(t_data *data)
 	str = data->line;
 	if (ft_strnstr(str, "sa", 2))
 		sa(data);
-	if (ft_strnstr(str, "sb", 2))
+	else if (ft_strnstr(str, "sb", 2))
 		sb(data);
-	if (ft_strnstr(str, "ss", 2))
+	else if (ft_strnstr(str, "ss", 2))
 		ss(data);
-	if (ft_strnstr(str, "pa", 2))
+	else if (ft_strnstr(str, "pa", 2))
 		pa(data);
-	if (ft_strnstr(str, "pb", 2))
+	else if (ft_strnstr(str, "pb", 2))
 		pb(data);
-	if (ft_strnstr(str, "ra", 2))
-		ra(data);
-	if (ft_strnstr(str, "rb", 2))
-		rb(data);
-	if (ft_strnstr(str, "rr", 2))
-		rr(data);
-	if (ft_strnstr(str, "rra", 3))
+	else if (ft_strnstr(str, "rra", 3))
 		rra(data);
-	if (ft_strnstr(str, "rrb", 3))
+	else if (ft_strnstr(str, "rrb", 3))
 		rrb(data);
-	if (ft_strnstr(str, "rrr", 3))
+	else if (ft_strnstr(str, "rrr", 3))
 		rrr(data);
+	else if (ft_strnstr(str, "ra", 2))
+		ra(data);
+	else if (ft_strnstr(str, "rb", 2))
+		rb(data);
+	else if (ft_strnstr(str, "rr", 2))
+		rr(data);
 }
 
 void	parse_line(t_data *data)

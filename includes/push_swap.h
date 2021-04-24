@@ -6,7 +6,7 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:06:27 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/23 16:42:34 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/24 11:40:05 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void			parse_args(t_data *data, char **argv);
 void			parse_line(t_data *data);
 
 int				check_order(t_data *data);
+int				get_number(t_list *list);
 
 int				main(int argc, char **argv);
 

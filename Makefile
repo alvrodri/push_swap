@@ -20,7 +20,7 @@ SANITIZE = -g3 -fsanitize=address
 
 ${NAME}:	${OBJS}
 			make bonus -C ./libft/
-			gcc ${GNL} ${OBJS} -L ./libft/ -l ft -o ${NAME}
+			gcc ${GNL} ${SANITIZE} ${OBJS} -L ./libft/ -l ft -o ${NAME}
 all:		${NAME}
 clean:
 			rm -f ${OBJS}

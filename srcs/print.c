@@ -6,11 +6,16 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:15:19 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/22 22:46:39 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/24 11:40:11 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	get_number(t_list *list)
+{
+	return (((t_stack *)list->content)->number);
+}
 
 void	stack_print(t_list *list)
 {
