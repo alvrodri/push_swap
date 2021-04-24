@@ -6,7 +6,7 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:06:27 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/24 11:40:05 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/24 12:06:53 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void			rrb(t_data *data);
 void			rrr(t_data *data);
 
 void			ft_exit(t_data *data, int status);
+void			list_free(t_data *data);
 void			stack_print(t_list *list);
 
 void			parse_args(t_data *data, char **argv);

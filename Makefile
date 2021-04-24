@@ -5,7 +5,18 @@ CHECKER_SRCS	=	srcs/checker.c \
 					srcs/swap_instruction.c \
 					srcs/rotate_instruction.c \
 					srcs/reverse_rotate_instruction.c \
-					srcs/validation.c
+					srcs/validation.c \
+					srcs/utils.c
+
+PUSH_SWAP_SRCS	=	srcs/push_swap.c \
+					srcs/parser.c \
+					srcs/print.c \
+					srcs/push_instruction.c \
+					srcs/swap_instruction.c \
+					srcs/rotate_instruction.c \
+					srcs/reverse_rotate_instruction.c \
+					srcs/validation.c \
+					srcs/utils.c
 
 GNL				=	./get_next_line/get_next_line.c \
 					./get_next_line/get_next_line_utils.c
@@ -14,6 +25,7 @@ CHECKER = checker
 PUSH_SWAP = push_swap
 
 CHECKER_OBJS = ${CHECKER_SRCS:.c=.o}
+PUSH_SWAP_OBJS = ${PUSH_SWAP_SRCS:.c=.o}
 
 CC = gcc
 CFLAGS = #-Wall -Wextra -Werror
