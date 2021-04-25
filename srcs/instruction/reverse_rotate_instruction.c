@@ -6,11 +6,11 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:59:40 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/24 11:46:42 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/25 15:10:04 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 /*
  * curr -> 1

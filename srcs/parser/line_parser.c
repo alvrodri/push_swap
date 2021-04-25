@@ -6,11 +6,11 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:49:30 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/24 11:56:19 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/25 15:09:31 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	is_instruction(char *str)
 {

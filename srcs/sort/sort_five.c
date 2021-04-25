@@ -6,19 +6,11 @@
 /*   By: alvaro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 11:05:34 by alvaro            #+#    #+#             */
-/*   Updated: 2021/04/25 11:46:38 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/25 15:03:17 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-
-/*
- * Maximum actions to pass: 12
- *
- * Move the first two numbers from the top of stack a and move them to stack b
- * then bring them back when the three numbers of stack a are sorted using
- * the sort_three algorithm used previously.
- */
+#include "../../includes/push_swap.h"
 
 int		is_largest_num(t_list *list, t_list *check)
 {

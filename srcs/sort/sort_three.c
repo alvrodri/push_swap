@@ -6,11 +6,11 @@
 /*   By: alvaro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 11:08:33 by alvaro            #+#    #+#             */
-/*   Updated: 2021/04/25 11:10:08 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/25 15:03:23 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	sort_three(t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:36:30 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/23 15:52:55 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/25 15:02:59 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	is_number(char *str)
 {

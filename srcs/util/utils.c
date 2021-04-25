@@ -6,11 +6,11 @@
 /*   By: alvaro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 12:05:58 by alvaro            #+#    #+#             */
-/*   Updated: 2021/04/25 11:42:50 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/25 15:02:35 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	list_free(t_data *data)
 {

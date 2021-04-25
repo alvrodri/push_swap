@@ -6,11 +6,11 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:15:19 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/25 11:10:54 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/25 15:02:43 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	get_number(t_list *list)
 {

@@ -6,11 +6,11 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:38:14 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/23 11:47:47 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/25 15:02:50 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	check_order(t_data *data)
 {

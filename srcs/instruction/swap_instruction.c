@@ -6,11 +6,11 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:20:55 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/23 16:32:44 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/25 15:09:41 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	sa(t_data *data)
 {
