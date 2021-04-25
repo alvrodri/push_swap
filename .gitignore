@@ -1,2 +1,7 @@
-build/
+*.py
+*.pl
+*.sh
+*.o
 *.dSYM
+push_swap
+checker
