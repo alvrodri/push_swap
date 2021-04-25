@@ -6,7 +6,7 @@
 /*   By: alvaro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 12:03:46 by alvaro            #+#    #+#             */
-/*   Updated: 2021/04/25 11:10:33 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/25 19:52:18 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,11 @@ int	main(int argc, char **argv)
 	(void)argc;
 	data.a = NULL;
 	data.b = NULL;
+	data.instructions = ft_strdup(" ");
 	parse_args(&data, argv + 1);
 	sort_start(&data);
+	if (ft_strlen(data.instructions) > 2)
+		instructions_print(&data);
 	list_free(&data);
+	free(data.instructions);
 }

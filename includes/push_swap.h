@@ -6,7 +6,7 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:06:27 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/25 11:38:46 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/25 19:42:55 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_data
 	t_list		*a;
 	t_list		*b;
 	char		*line;
+	char		*instructions;
 }				t_data;
 
 void			sa(t_data *data);
@@ -51,6 +52,10 @@ void			parse_args(t_data *data, char **argv);
 void			parse_line(t_data *data);
 
 void			move_smallest_to_b(t_data *data);
+
+void			instruction_add(t_data *data, char *type);
+void			instructions_print(t_data *data);
+
 void			sort_three(t_data *data);
 void			sort_five(t_data *data);
 

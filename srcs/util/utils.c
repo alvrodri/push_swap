@@ -6,7 +6,7 @@
 /*   By: alvaro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 12:05:58 by alvaro            #+#    #+#             */
-/*   Updated: 2021/04/25 15:02:35 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/25 19:29:38 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int		smallest_num_in_stack(t_list *list)
 void	ft_exit(t_data *data, int status)
 {
 	list_free(data);
+	if (data->instructions)
+		free(data->instructions);
 	exit(status);
 }
 
