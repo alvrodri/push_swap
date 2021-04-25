@@ -11,6 +11,7 @@ CHECKER_SRCS	=	srcs/checker.c \
 PUSH_SWAP_SRCS	=	srcs/push_swap.c \
 					srcs/parser.c \
 					srcs/print.c \
+					srcs/sort_three.c srcs/sort_five.c \
 					srcs/push_instruction.c \
 					srcs/swap_instruction.c \
 					srcs/rotate_instruction.c \
