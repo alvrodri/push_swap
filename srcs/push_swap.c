@@ -6,7 +6,7 @@
 /*   By: alvaro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 12:03:46 by alvaro            #+#    #+#             */
-/*   Updated: 2021/04/25 19:52:18 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/26 14:03:44 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	sort_start(t_data *data)
 	else if (size > 3 && size < 6)
 		sort_five(data);
 	else if (size > 5)
-		;//sort_one_hundred(data);
+		sort_one_hundred(data);
 	else
 		;//sort_five_hundred(data);
 	return ;

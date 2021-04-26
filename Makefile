@@ -12,6 +12,7 @@ PUSH_SWAP_SRCS	=	srcs/push_swap.c \
 					srcs/parser/parser.c \
 					srcs/util/print.c \
 					srcs/sort/sort_three.c srcs/sort/sort_five.c \
+					srcs/sort/sort_one_hundred.c \
 					srcs/instruction/push_instruction.c \
 					srcs/instruction/swap_instruction.c \
 					srcs/instruction/rotate_instruction.c \

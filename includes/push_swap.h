@@ -6,7 +6,7 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:06:27 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/25 19:42:55 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/26 17:43:49 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void			rrr(t_data *data);
 void			ft_exit(t_data *data, int status);
 void			list_free(t_data *data);
 void			stack_print(t_list *list);
+void			print_instruction(t_data *data, char *instruction);
 void			exec_print(t_data *data, char *str);
 
 void			parse_args(t_data *data, char **argv);
@@ -58,6 +59,7 @@ void			instructions_print(t_data *data);
 
 void			sort_three(t_data *data);
 void			sort_five(t_data *data);
+void			sort_one_hundred(t_data *data);
 
 int				smallest_num_in_stack(t_list *list);
 int				check_order(t_data *data);

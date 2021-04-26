@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:15:19 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/25 19:53:47 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/04/26 17:46:27 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,32 @@ void	exec_print(t_data *data, char *str)
 	}
 }
 
+void	print_instruction(t_data *data, char *instruction)
+{
+	t_list	*a;
+	t_list	*b;
+
+	a = data->a;
+	b = data->b;
+	if (!b || ft_lstsize(a) > ft_lstsize(b))
+	{
+		printf("\e[1;1H\e[2J");
+		printf("\n");
+		printf("%s:\n\n", instruction);
+		while (a)
+		{
+			if (b)
+				printf("%-10d%5d\n", get_number(a), get_number(b));
+			else
+				printf("%-10d\n", get_number(a));
+			a = a->next;
+			if (b)
+				b = b->next;
+		}
+		usleep(500000);
+	}
+}
+
 void	instruction_add(t_data *data, char *type)
 {
 	char	*tmp;
@@ -94,6 +120,9 @@ void	instructions_print(t_data *data)
 	split = ft_split(data->instructions, ' ');
 	while (split[i])
 	{
+		if (split[i + 1] && (!ft_strncmp(split[i], "rra", 3)
+			&& !ft_strncmp(split[i + 1], "ra", 2)))
+			printf("DUP\n");
 		printf("%s\n", split[i]);
 		free(split[i]);
 		i++;
