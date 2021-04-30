@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:15:19 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/26 17:46:27 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/04/30 15:28:19 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,30 +76,49 @@ void	exec_print(t_data *data, char *str)
 	}
 }
 
+void	print_line(int n)
+{
+	int i;
+
+	i = 0;
+	while (i < n)
+	{
+		write(1, "-", 2);
+		i++;
+	}
+}
+
 void	print_instruction(t_data *data, char *instruction)
 {
 	t_list	*a;
 	t_list	*b;
 
+
 	a = data->a;
 	b = data->b;
-	if (!b || ft_lstsize(a) > ft_lstsize(b))
+	printf("\e[1;1H\e[2J\n");
+	printf("%30s\n", instruction);
+	printf("%20c", 'A');
+	printf("%20c\n", 'B');
+	while (1)
 	{
-		printf("\e[1;1H\e[2J");
+		if (!a && !b)
+			break ;
+		if (a)
+			printf("%20d", get_number(a));
+		else
+			printf("%20c", ' ');
+		if (b)
+			printf("%20d", get_number(b));
+		else
+			printf("%20c", ' ');
 		printf("\n");
-		printf("%s:\n\n", instruction);
-		while (a)
-		{
-			if (b)
-				printf("%-10d%5d\n", get_number(a), get_number(b));
-			else
-				printf("%-10d\n", get_number(a));
+		if (a)
 			a = a->next;
-			if (b)
-				b = b->next;
-		}
-		usleep(500000);
+		if (b)
+			b = b->next;
 	}
+	usleep(100000);
 }
 
 void	instruction_add(t_data *data, char *type)
@@ -111,20 +130,48 @@ void	instruction_add(t_data *data, char *type)
 	free(tmp);
 }
 
+char	*remove_duplicates(t_data *data, char *type)
+{
+	char	*string;
+	char	*find;
+	char	*back;
+	char	*tmp;
+
+	string = data->instructions;
+	find = ft_strnstr(string, type, ft_strlen(string));
+	while (find != NULL)
+	{
+		*find = '\0';
+		back = ft_strdup(find + ft_strlen(type));
+		tmp = ft_strjoin(string, back);
+		//free(string);
+		free(back);
+		string = tmp;
+		find = ft_strnstr(string, type, ft_strlen(string));
+	}
+	return (string);
+}
+
 void	instructions_print(t_data *data)
 {
 	int		i;
+	int		pb;
+	int		pa;
 	char	**split;
 
 	i = 0;
+//	data->instructions = remove_duplicates(data, "pa pb");
+	data->instructions = remove_duplicates(data, "pb pa ");
+//	data->instructions = remove_duplicates(data, "ra rra");
+//	data->instructions = remove_duplicates(data, "rra ra");
 	split = ft_split(data->instructions, ' ');
 	while (split[i])
 	{
-		if (split[i + 1] && (!ft_strncmp(split[i], "rra", 3)
-			&& !ft_strncmp(split[i + 1], "ra", 2)))
-			printf("DUP\n");
-		printf("%s\n", split[i]);
-		free(split[i]);
+		if (split[i] && split[i][0] != ' ')
+		{
+			printf("%s\n", split[i]);
+			free(split[i]);
+		}
 		i++;
 	}
 	free(split);
