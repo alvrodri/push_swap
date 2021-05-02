@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:15:19 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/30 15:28:19 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/02 16:05:07 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,43 @@ void	print_line(int n)
 	i = 0;
 	while (i < n)
 	{
-		write(1, "-", 2);
+		printf("█");
 		i++;
 	}
+	printf("\n");
+}
+
+void	print_instruction_color(t_data *data, char *instruction)
+{
+	t_list	*a;
+	t_list	*b;
+
+
+	a = data->a;
+	b = data->b;
+	printf("\e[1;1H\e[2J\n");
+	printf("%30s\n", instruction);
+	printf("\x1B[32m\n");
+	while (1)
+	{
+		if (!a && !b)
+			break ;
+		if (a)
+			print_line(get_number(a));
+		if (b)
+			print_line(get_number(b));
+		if (a)
+			a = a->next;
+		if (b)
+			b = b->next;
+	}
+	printf("\033[0m\n");
+	usleep(100000);
 }
 
 void	print_instruction(t_data *data, char *instruction)
 {
-	t_list	*a;
+	/*t_list	*a;
 	t_list	*b;
 
 
@@ -118,7 +147,8 @@ void	print_instruction(t_data *data, char *instruction)
 		if (b)
 			b = b->next;
 	}
-	usleep(100000);
+	usleep(100000);*/
+	print_instruction_color(data, instruction);
 }
 
 void	instruction_add(t_data *data, char *type)

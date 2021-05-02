@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:49:30 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/26 17:42:34 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/02 15:57:41 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	execute_instruction(t_data *data)
 		rb(data);
 	else if (ft_strnstr(str, "rr", 2))
 		rr(data);
-	print_instruction(data, str);
+	if (data->debug)
+		print_instruction(data, str);
 }
 
 void	parse_line(t_data *data)

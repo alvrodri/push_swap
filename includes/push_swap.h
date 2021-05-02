@@ -6,7 +6,7 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:06:27 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/26 17:43:49 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/02 15:56:01 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_data
 {
 	t_list		*a;
 	t_list		*b;
+	int			debug;
 	char		*line;
 	char		*instructions;
 }				t_data;

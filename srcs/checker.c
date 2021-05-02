@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:36:44 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/25 19:29:48 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/05/02 15:57:54 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	data.a = NULL;
 	data.b = NULL;
 	data.instructions = NULL;
+	data.debug = 1;
 	parse_args(&data, argv + 1);
 	parse_line(&data);
 	list_free(&data);
