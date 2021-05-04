@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:15:19 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/02 16:05:07 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:02:42 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,12 @@ void	print_instruction_color(t_data *data, char *instruction)
 			b = b->next;
 	}
 	printf("\033[0m\n");
-	usleep(100000);
+	usleep(1000);
 }
 
 void	print_instruction(t_data *data, char *instruction)
 {
-	/*t_list	*a;
+	t_list	*a;
 	t_list	*b;
 
 
@@ -147,8 +147,8 @@ void	print_instruction(t_data *data, char *instruction)
 		if (b)
 			b = b->next;
 	}
-	usleep(100000);*/
-	print_instruction_color(data, instruction);
+	usleep(100000);
+	//print_instruction_color(data, instruction);
 }
 
 void	instruction_add(t_data *data, char *type)
@@ -190,7 +190,7 @@ void	instructions_print(t_data *data)
 	char	**split;
 
 	i = 0;
-//	data->instructions = remove_duplicates(data, "pa pb");
+	data->instructions = remove_duplicates(data, "pa pb");
 	data->instructions = remove_duplicates(data, "pb pa ");
 //	data->instructions = remove_duplicates(data, "ra rra");
 //	data->instructions = remove_duplicates(data, "rra ra");
