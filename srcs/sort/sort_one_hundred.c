@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 13:22:56 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/26 17:29:33 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/05 15:43:50 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	continue_sort(t_data *data)
 	}
 }
 
-void	sort_one_hundred(t_data *data)
+/*void	sort_one_hundred(t_data *data)
 {
 	while (ft_lstsize(data->a) > 0)
 	{
@@ -94,4 +94,4 @@ void	sort_one_hundred(t_data *data)
 	{
 		exec_print(data, "pa ");
 	}
-}
+}*/

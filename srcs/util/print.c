@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:15:19 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/04 11:02:42 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/05 15:46:40 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,8 @@ void	instructions_print(t_data *data)
 	int		pa;
 	char	**split;
 
+	if (ft_strlen(data->instructions) <= 1)
+		return ;
 	i = 0;
 	data->instructions = remove_duplicates(data, "pa pb");
 	data->instructions = remove_duplicates(data, "pb pa ");

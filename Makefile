@@ -18,7 +18,8 @@ PUSH_SWAP_SRCS	=	srcs/push_swap.c \
 					srcs/instruction/rotate_instruction.c \
 					srcs/instruction/reverse_rotate_instruction.c \
 					srcs/util/validation.c \
-					srcs/util/utils.c
+					srcs/util/utils.c \
+					srcs/sort/alvaro.c
 
 GNL				=	./get_next_line/get_next_line.c \
 					./get_next_line/get_next_line_utils.c
