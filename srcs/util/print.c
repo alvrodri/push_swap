@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 18:15:19 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/05 15:46:40 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/06 16:39:15 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void	print_instruction(t_data *data, char *instruction)
 		if (b)
 			b = b->next;
 	}
-	usleep(100000);
+	usleep(500000);
 	//print_instruction_color(data, instruction);
 }
 
