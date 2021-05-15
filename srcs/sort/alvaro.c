@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:37:41 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/06 17:06:51 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/15 13:35:08 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,68 @@ void	swap(int *xp, int *yp)
 	*xp = *yp;
 	*yp = temp;
 }
+
+static int	get_min_number(t_list *list)
+{
+	t_list	*aux;
+	int		min;
+
+	if (!list)
+		return (0);
+	min= get_number(list);
+	aux = list;
+	while (aux)
+	{
+		if (get_number(aux) < min)
+			min = get_number(aux);
+		aux = aux->next;
+	}
+	return (min);
+}
+
+int	get_max_number(t_list *list)
+{
+	t_list	*aux;
+	int		max;
+
+	if (!list)
+		return (0);
+	max = get_number(list);
+	aux = list;
+	while (aux)
+	{
+		if (get_number(aux) > max)
+			max = get_number(aux);
+		aux = aux->next;
+	}
+	return (max);
+}
+
+int	get_dir_closest_to_top(int n, t_list **list)
+{
+	t_list	*aux;
+	int		i;
+	int		size;
+
+	if (!*list)
+		return (-1);
+	i = 0;
+	size = ft_lstsize(*list);
+	aux = *list;
+	while (aux)
+	{
+		if (get_number(aux) == n)
+			break ;
+		aux = aux->next;
+		i++;
+	}
+	if (i < size / 2)
+		return (1);
+	else
+		return (0);
+}
+
+
 
 void	bubble_sort(int *arr, int n)
 {
@@ -80,33 +142,49 @@ int		instructions_to_b(t_data *data, int n)
 	return (1);
 }
 
+void	move_number_to_stack_b(t_data *data, int n)
+{
+	t_list	*aux;
+	int		dir;
+	int		i;
+
+	if (!data->a)
+		return ;
+	aux = data->a;
+	dir = get_dir_closest_to_top(n, &data->a);
+	i = 0;
+	while (aux)
+	{
+		if (get_number(aux) == n)
+		{
+			while (get_number(data->a) != n)
+			{
+				if (dir)
+					exec_print(data, "ra ");
+				else
+					exec_print(data, "rra ");
+			}
+			exec_print(data, "pb ");
+			break ;
+		}
+		aux = aux->next;
+		i++;
+	}
+}
+
 void	pass_to_b_fr(t_data *data, t_list *elem)
 {
 	t_list *aux;
 
 	aux = data->a;
-	while (aux)
-	{
-		if (aux == elem)
-		{
-			/* hacer que lo pase optimizadamente
-			 * basicamente hacer ra si esta de la mitad para arriba
-			 * o rra si está de la mitad para abajo.. lazy..
-			 */
-			while (data->a != elem)
-				exec_print(data, "ra");
-			break ;
-		}
-		aux = aux->next;
-	}
-	exec_print(data, "pb");
-	if (data->b && data->b->next && data->b->next->next && get_number(data->b)
+	move_number_to_stack_b(data, get_number(elem));
+	/*if (data->b && data->b->next && data->b->next->next && get_number(data->b)
 		< get_number(data->b->next) && get_number(data->b->next) > get_number(data->b->next->next))
 		exec_print(data, "sb");
 	if (data->b && data->b->next && get_number(data->b->next) > get_number(data->b))
 		exec_print(data, "rb");
 	while (data->b->next && get_number(data->b) < get_number(data->b->next))
-		exec_print(data, "rb");
+		exec_print(data, "rb");*/
 }
 
 void	pass_better_to_b(t_data *data, int x, int y)
@@ -158,12 +236,44 @@ void	pass_to_b(t_data *data, int x, int y)
 	}
 }
 
+void	move_number_to_stack_a(t_data *data, int n)
+{
+	t_list	*aux;
+	int		dir;
+	int		i;
+
+	if (!data->b)
+		return ;
+	aux = data->b;
+	dir = get_dir_closest_to_top(n, &data->b);
+	i = 0;
+	while (aux)
+	{
+		if (get_number(aux) == n)
+		{
+			while (get_number(data->b) != n)
+			{
+				if (dir)
+					exec_print(data, "rb ");
+				else
+					exec_print(data, "rrb ");
+			}
+			exec_print(data, "pa ");
+			break ;
+		}
+		aux = aux->next;
+		i++;
+	}
+}
+
 void	sort_one_hundred(t_data *data)
 {
 	t_list	*aux;
 	int		*sorted;
 	int		*ranges;
+	int		i;
 
+	i = 0;
 	sorted = malloc(sizeof(int) * ft_lstsize(data->a));
 	if (!sorted)
 		return ;
@@ -176,18 +286,26 @@ void	sort_one_hundred(t_data *data)
 	}
 	sorted -= ft_lstsize(data->a);
 	bubble_sort(sorted, ft_lstsize(data->a));
-	ranges = get_ranges(data, sorted, ft_lstsize(data->a), 5);
-	pass_to_b(data, ranges[0], ranges[1]);
-	pass_to_b(data, ranges[2], ranges[3]);
-	pass_to_b(data, ranges[4], ranges[5]);
-	/*pass_to_b(data, ranges[6], ranges[7]);
-	pass_to_b(data, ranges[8], ranges[9]);*/
-	aux = data->b;
-	while (aux)
+	if (ft_lstsize(data->a) > 100)
 	{
-		if (aux->next && get_number(aux) < get_number(aux->next))
-			exec_print(data, "sb");
-		exec_print(data, "pa");
-		aux = aux->next;
+		ranges = get_ranges(data, sorted, ft_lstsize(data->a), 6);
+		while (i < 12)
+		{
+			pass_to_b(data, ranges[i], ranges[i + 1]);
+			i += 2;
+		}
 	}
+	else
+	{
+		ranges = get_ranges(data, sorted, ft_lstsize(data->a), 5);
+		while (i < 10)
+		{
+			pass_to_b(data, ranges[i], ranges[i + 1]);
+			i += 2;
+		}
+	}
+	while (data->a)
+		exec_print(data, "pb ");
+	while (data->b)
+		move_number_to_stack_a(data, get_max_number(data->b));
 }
