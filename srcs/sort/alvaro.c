@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:37:41 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/15 13:35:08 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/15 18:28:23 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,20 +106,22 @@ int	*get_ranges(t_data *data, int *numbers, int size, int n)
 	int		*ranges;
 	int		num;
 	int 	rest;
+	int		i;
+	int		j;
 
 	num = size / n;
 	rest = size % n;
 	ranges = malloc(sizeof(int) * (n * 2));
 	ranges[0] = numbers[0];
-	ranges[1] = numbers[num - 1];
-	ranges[2] = numbers[num];
-	ranges[3] = numbers[num * 2 - 1];
-	ranges[4] = numbers[num * 2];
-	ranges[5] = numbers[num * 3 - 1];
-	ranges[6] = numbers[num * 3];
-	ranges[7] = numbers[num * 4 - 1];
-	ranges[8] = numbers[num * 4];
-	ranges[9] = numbers[num * 5 - 1];
+	i = 1;
+	j = 1;
+	while (i < n * 2 - 1)
+	{
+		ranges[i] = numbers[(num * j) - 1];
+		ranges[i + 1] = numbers[num * j];
+		i += 2;
+		j++;
+	}
 	return (ranges);
 }
 
@@ -288,8 +290,8 @@ void	sort_one_hundred(t_data *data)
 	bubble_sort(sorted, ft_lstsize(data->a));
 	if (ft_lstsize(data->a) > 100)
 	{
-		ranges = get_ranges(data, sorted, ft_lstsize(data->a), 6);
-		while (i < 12)
+		ranges = get_ranges(data, sorted, ft_lstsize(data->a), 12);
+		while (i < 24)
 		{
 			pass_to_b(data, ranges[i], ranges[i + 1]);
 			i += 2;

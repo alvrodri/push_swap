@@ -39,11 +39,11 @@ all:			${CHECKER} ${PUSH_SWAP}
 
 ${CHECKER}:		${CHECKER_OBJS}
 				make bonus -C ./libft/
-				gcc ${GNL} ${SANITIZE} ${CHECKER_OBJS} -L ./libft/ -l ft -o ${CHECKER}
+				gcc ${GNL} ${CHECKER_OBJS} -L ./libft/ -l ft -o ${CHECKER}
 
 ${PUSH_SWAP}:	${PUSH_SWAP_OBJS}
 				make bonus -C ./libft/
-				gcc ${GNL} ${SANITIZE} ${PUSH_SWAP_OBJS} -L ./libft/ -l ft -o ${PUSH_SWAP}
+				gcc ${GNL} ${PUSH_SWAP_OBJS} -L ./libft/ -l ft -o ${PUSH_SWAP}
 
 clean:
 			rm -f ${PUSH_SWAP_OBJS}
