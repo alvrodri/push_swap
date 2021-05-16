@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alvaro.c                                           :+:      :+:    :+:   */
+/*   sort_large.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:37:41 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/15 18:28:23 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/05/16 13:45:46 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	get_min_number(t_list *list)
 
 	if (!list)
 		return (0);
-	min= get_number(list);
+	min = get_number(list);
 	aux = list;
 	while (aux)
 	{
@@ -81,12 +81,11 @@ int	get_dir_closest_to_top(int n, t_list **list)
 		return (0);
 }
 
-
-
 void	bubble_sort(int *arr, int n)
 {
 	int	i;
 	int	j;
+
 	i = 0;
 	while (i < n - 1)
 	{
@@ -103,11 +102,11 @@ void	bubble_sort(int *arr, int n)
 
 int	*get_ranges(t_data *data, int *numbers, int size, int n)
 {
-	int		*ranges;
-	int		num;
-	int 	rest;
-	int		i;
-	int		j;
+	int	*ranges;
+	int	num;
+	int	rest;
+	int	i;
+	int	j;
 
 	num = size / n;
 	rest = size % n;
@@ -125,7 +124,7 @@ int	*get_ranges(t_data *data, int *numbers, int size, int n)
 	return (ranges);
 }
 
-int		instructions_to_b(t_data *data, int n)
+int	instructions_to_b(t_data *data, int n)
 {
 	t_list	*aux;
 	int		size;
@@ -144,6 +143,17 @@ int		instructions_to_b(t_data *data, int n)
 	return (1);
 }
 
+void	while_move_number_to_stack_b(t_data *data, int dir, int n)
+{
+	while (get_number(data->a) != n)
+	{
+		if (dir)
+			exec_print(data, "ra ");
+		else
+			exec_print(data, "rra ");
+	}
+}
+
 void	move_number_to_stack_b(t_data *data, int n)
 {
 	t_list	*aux;
@@ -159,13 +169,7 @@ void	move_number_to_stack_b(t_data *data, int n)
 	{
 		if (get_number(aux) == n)
 		{
-			while (get_number(data->a) != n)
-			{
-				if (dir)
-					exec_print(data, "ra ");
-				else
-					exec_print(data, "rra ");
-			}
+			while_move_number_to_stack_b(data, dir, n);
 			exec_print(data, "pb ");
 			break ;
 		}
@@ -174,19 +178,15 @@ void	move_number_to_stack_b(t_data *data, int n)
 	}
 }
 
-void	pass_to_b_fr(t_data *data, t_list *elem)
+void	what_number_to_move_to_b(t_data *data, t_list *first, t_list *second)
 {
-	t_list *aux;
-
-	aux = data->a;
-	move_number_to_stack_b(data, get_number(elem));
-	/*if (data->b && data->b->next && data->b->next->next && get_number(data->b)
-		< get_number(data->b->next) && get_number(data->b->next) > get_number(data->b->next->next))
-		exec_print(data, "sb");
-	if (data->b && data->b->next && get_number(data->b->next) > get_number(data->b))
-		exec_print(data, "rb");
-	while (data->b->next && get_number(data->b) < get_number(data->b->next))
-		exec_print(data, "rb");*/
+	if (!second || instructions_to_b(data, get_number(first))
+		< instructions_to_b(data, get_number(second)))
+		move_number_to_stack_b(data, get_number(first));
+	else if (second)
+		move_number_to_stack_b(data, get_number(second));
+	else
+		return ;
 }
 
 void	pass_better_to_b(t_data *data, int x, int y)
@@ -211,15 +211,7 @@ void	pass_better_to_b(t_data *data, int x, int y)
 		}
 		aux = aux->next;
 	}
-	if (!second || instructions_to_b(data, get_number(first))
-		< instructions_to_b(data, get_number(second)))
-	{
-		pass_to_b_fr(data, first);
-	}
-	else if (second)
-		pass_to_b_fr(data, second);
-	else
-		;
+	what_number_to_move_to_b(data, first, second);
 }
 
 void	pass_to_b(t_data *data, int x, int y)
@@ -238,6 +230,17 @@ void	pass_to_b(t_data *data, int x, int y)
 	}
 }
 
+void	while_move_number_to_stack_a(t_data *data, int dir, int n)
+{
+	while (get_number(data->b) != n)
+	{
+		if (dir)
+			exec_print(data, "rb ");
+		else
+			exec_print(data, "rrb ");
+	}
+}
+
 void	move_number_to_stack_a(t_data *data, int n)
 {
 	t_list	*aux;
@@ -253,13 +256,7 @@ void	move_number_to_stack_a(t_data *data, int n)
 	{
 		if (get_number(aux) == n)
 		{
-			while (get_number(data->b) != n)
-			{
-				if (dir)
-					exec_print(data, "rb ");
-				else
-					exec_print(data, "rrb ");
-			}
+			while_move_number_to_stack_a(data, dir, n);
 			exec_print(data, "pa ");
 			break ;
 		}
@@ -268,14 +265,37 @@ void	move_number_to_stack_a(t_data *data, int n)
 	}
 }
 
-void	sort_one_hundred(t_data *data)
+void	set_ranges(t_data *data, int **ranges, int *sorted)
+{
+	int	i;
+
+	i = 0;
+	if (ft_lstsize(data->a) > 100)
+	{
+		*ranges = get_ranges(data, sorted, ft_lstsize(data->a), 12);
+		while (i < 24)
+		{
+			pass_to_b(data, (*ranges)[i], (*ranges)[i + 1]);
+			i += 2;
+		}
+	}
+	else
+	{
+		*ranges = get_ranges(data, sorted, ft_lstsize(data->a), 5);
+		while (i < 10)
+		{
+			pass_to_b(data, (*ranges)[i], (*ranges)[i + 1]);
+			i += 2;
+		}
+	}
+}
+
+void	sort_large(t_data *data)
 {
 	t_list	*aux;
 	int		*sorted;
 	int		*ranges;
-	int		i;
 
-	i = 0;
 	sorted = malloc(sizeof(int) * ft_lstsize(data->a));
 	if (!sorted)
 		return ;
@@ -288,26 +308,11 @@ void	sort_one_hundred(t_data *data)
 	}
 	sorted -= ft_lstsize(data->a);
 	bubble_sort(sorted, ft_lstsize(data->a));
-	if (ft_lstsize(data->a) > 100)
-	{
-		ranges = get_ranges(data, sorted, ft_lstsize(data->a), 12);
-		while (i < 24)
-		{
-			pass_to_b(data, ranges[i], ranges[i + 1]);
-			i += 2;
-		}
-	}
-	else
-	{
-		ranges = get_ranges(data, sorted, ft_lstsize(data->a), 5);
-		while (i < 10)
-		{
-			pass_to_b(data, ranges[i], ranges[i + 1]);
-			i += 2;
-		}
-	}
+	set_ranges(data, &ranges, sorted);
 	while (data->a)
 		exec_print(data, "pb ");
 	while (data->b)
 		move_number_to_stack_a(data, get_max_number(data->b));
+	free(sorted);
+	free(ranges);
 }

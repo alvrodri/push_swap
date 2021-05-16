@@ -6,11 +6,30 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:49:30 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/02 15:57:41 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/16 13:35:03 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+int	is_instruction2(char *str)
+{
+	if ((ft_strnstr(str, "ra", 2)
+			|| ft_strnstr(str, "rb", 2)
+			|| ft_strnstr(str, "rr", 2)) && ft_strlen(str) == 2)
+	{
+		free(str);
+		return (1);
+	}
+	if ((ft_strnstr(str, "rra", 3)
+			|| ft_strnstr(str, "rrb", 3)
+			|| ft_strnstr(str, "rrr", 3)) && ft_strlen(str) == 3)
+	{
+		free(str);
+		return (1);
+	}
+	return (0);
+}
 
 int	is_instruction(char *str)
 {
@@ -18,32 +37,20 @@ int	is_instruction(char *str)
 		return (1);
 	str = ft_strtrim(str, " ");
 	if ((ft_strnstr(str, "pa", 2)
-		|| ft_strnstr(str, "pb", 2)) && ft_strlen(str) == 2)
+			|| ft_strnstr(str, "pb", 2)) && ft_strlen(str) == 2)
 	{
 		free(str);
 		return (1);
 	}
 	if ((ft_strnstr(str, "sa", 2)
-		|| ft_strnstr(str, "sb", 2)
-		|| ft_strnstr(str, "ss", 2)) && ft_strlen(str) == 2)
+			|| ft_strnstr(str, "sb", 2)
+			|| ft_strnstr(str, "ss", 2)) && ft_strlen(str) == 2)
 	{
 		free(str);
 		return (1);
 	}
-	if ((ft_strnstr(str, "ra", 2)
-		|| ft_strnstr(str, "rb", 2)
-		|| ft_strnstr(str, "rr", 2)) && ft_strlen(str) == 2)
-	{
-		free(str);
+	if (is_instruction2(str))
 		return (1);
-	}
-	if ((ft_strnstr(str, "rra", 3)
-		|| ft_strnstr(str, "rrb", 3)
-		|| ft_strnstr(str, "rrr", 3)) && ft_strlen(str) == 3)
-	{
-		free(str);
-		return (1);
-	}
 	free(str);
 	return (0);
 }
@@ -75,8 +82,6 @@ void	execute_instruction(t_data *data)
 		rb(data);
 	else if (ft_strnstr(str, "rr", 2))
 		rr(data);
-	if (data->debug)
-		print_instruction(data, str);
 }
 
 void	parse_line(t_data *data)
@@ -87,7 +92,7 @@ void	parse_line(t_data *data)
 	while (read)
 	{
 		if (!is_instruction(data->line))
-			ft_exit(data, printf("'%s' is not a valid instruction.\n", data->line));
+			ft_exit(data, printf("Error\n"));
 		execute_instruction(data);
 		free(data->line);
 		read = get_next_line(0, &data->line);

@@ -6,11 +6,27 @@
 /*   By: alvaro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 12:05:58 by alvaro            #+#    #+#             */
-/*   Updated: 2021/04/25 19:29:38 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/05/16 13:32:12 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+int	is_number(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if ((i != 0 && str[i] == '-') || (str[i] == '-' && ft_strlen(str) == 1))
+			return (0);
+		if (!ft_isdigit(str[i]) && str[i] != '-')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 void	list_free(t_data *data)
 {
@@ -57,7 +73,7 @@ void	move_smallest_to_b(t_data *data)
 	}
 }
 
-int		smallest_num_in_stack(t_list *list)
+int	smallest_num_in_stack(t_list *list)
 {
 	int	number;
 
@@ -78,4 +94,3 @@ void	ft_exit(t_data *data, int status)
 		free(data->instructions);
 	exit(status);
 }
-

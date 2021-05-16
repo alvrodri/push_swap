@@ -6,7 +6,7 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:06:27 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/02 15:56:01 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/16 13:31:40 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "../libft/libft.h"
-# include "../get_next_line/get_next_line.h"
+# include "../resources/libft/libft.h"
+# include "../resources/get_next_line/get_next_line.h"
 
-typedef	struct	s_stack
+typedef struct s_stack
 {
 	int			number;
 }				t_stack;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	t_list		*a;
 	t_list		*b;
@@ -44,6 +44,11 @@ void			rra(t_data *data);
 void			rrb(t_data *data);
 void			rrr(t_data *data);
 
+int				exec_print_s(t_data *data, char *str);
+int				exec_print_p(t_data *data, char *str);
+int				exec_print_rx(t_data *data, char *str);
+int				exec_print_rrx(t_data *data, char *str);
+
 void			ft_exit(t_data *data, int status);
 void			list_free(t_data *data);
 void			stack_print(t_list *list);
@@ -58,13 +63,16 @@ void			move_smallest_to_b(t_data *data);
 void			instruction_add(t_data *data, char *type);
 void			instructions_print(t_data *data);
 
+void			sort_two(t_data *data);
 void			sort_three(t_data *data);
+void			sort_four(t_data *data);
 void			sort_five(t_data *data);
-void			sort_one_hundred(t_data *data);
+void			sort_large(t_data *data);
 
 int				smallest_num_in_stack(t_list *list);
 int				check_order(t_data *data);
 int				get_number(t_list *list);
+int				is_number(char *str);
 
 int				main(int argc, char **argv);
 

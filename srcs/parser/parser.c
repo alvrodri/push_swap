@@ -6,41 +6,11 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:36:30 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/04 15:29:07 by alvrodri         ###   ########.fr       */
+/*   Updated: 2021/05/16 13:30:39 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-int	equals(char *key, char *value)
-{
-	int	key_len;
-	int	value_len;
-
-	if (!key || !value)
-		return (0);
-	key_len = ft_strlen(key);
-	value_len = ft_strlen(value);
-	if (!ft_strncmp(key, value, value_len) && key_len == value_len)
-		return (1);
-	return (0);
-}
-
-int	is_number(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if ((i != 0 && str[i] == '-') || (str[i] == '-' && ft_strlen(str) == 1))
-			return (0);
-		if (!ft_isdigit(str[i]) && str[i] != '-')
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 void	split_free(char	**split)
 {
@@ -103,9 +73,7 @@ void	parse_args(t_data *data, char **argv)
 		split = ft_split(argv[i], ' ');
 		while (split[j])
 		{
-			if (equals(split[j], "-d"))
-				data->debug = 1;
-			else if (is_number(split[j]))
+			if (is_number(split[j]))
 				allocate_number(data, ft_atoi(split[j]));
 			else
 				ft_exit(data, printf("'%s' is not a number.\n", split[j]));

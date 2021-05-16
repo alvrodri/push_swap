@@ -6,7 +6,7 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:20:55 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/04/25 15:09:41 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/05/16 13:29:01 by alvaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	sa(t_data *data)
 		return ;
 	number = ((t_stack *)data->a->next->content)->number;
 	((t_stack *)data->a->next->content)->number
-	= ((t_stack *)data->a->content)->number;
+		= ((t_stack *)data->a->content)->number;
 	((t_stack *)data->a->content)->number = number;
 }
 
@@ -32,7 +32,7 @@ void	sb(t_data *data)
 		return ;
 	number = ((t_stack *)data->b->next->content)->number;
 	((t_stack *)data->b->next->content)->number
-	= ((t_stack *)data->b->content)->number;
+		= ((t_stack *)data->b->content)->number;
 	((t_stack *)data->b->content)->number = number;
 }
 
