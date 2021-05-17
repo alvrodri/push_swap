@@ -6,7 +6,7 @@
 /*   By: alvaro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 12:05:58 by alvaro            #+#    #+#             */
-/*   Updated: 2021/05/16 13:32:12 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/05/17 08:55:27 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,12 @@ int	smallest_num_in_stack(t_list *list)
 	return (number);
 }
 
-void	ft_exit(t_data *data, int status)
+void	ft_exit(t_data *data, char *status)
 {
 	list_free(data);
 	if (data->instructions)
 		free(data->instructions);
-	exit(status);
+	if (status)
+		ft_putstr_fd(status, 2);
+	exit(1);
 }

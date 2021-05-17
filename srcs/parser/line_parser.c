@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:49:30 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/16 13:35:03 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/05/17 08:53:05 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_instruction2(char *str)
 int	is_instruction(char *str)
 {
 	if (str[0] == '\0')
-		return (1);
+		return (0);
 	str = ft_strtrim(str, " ");
 	if ((ft_strnstr(str, "pa", 2)
 			|| ft_strnstr(str, "pb", 2)) && ft_strlen(str) == 2)
@@ -92,7 +92,7 @@ void	parse_line(t_data *data)
 	while (read)
 	{
 		if (!is_instruction(data->line))
-			ft_exit(data, printf("Error\n"));
+			ft_exit(data, "Error\n");
 		execute_instruction(data);
 		free(data->line);
 		read = get_next_line(0, &data->line);

@@ -6,7 +6,7 @@
 /*   By: alvrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 15:36:30 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/16 13:30:39 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/05/17 08:55:27 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ void	check_duplicates(t_data *data)
 		{
 			if (((t_stack *)aux->content)->number == ((t_stack *)curr->content)
 				->number && (aux != curr))
-				ft_exit(data, printf("'%d' is duplicated.\n",
-						((t_stack *)curr->content)->number));
+				ft_exit(data, "Error\n");
 			aux = aux->next;
 		}
 		curr = curr->next;
@@ -76,13 +75,13 @@ void	parse_args(t_data *data, char **argv)
 			if (is_number(split[j]))
 				allocate_number(data, ft_atoi(split[j]));
 			else
-				ft_exit(data, printf("'%s' is not a number.\n", split[j]));
+				ft_exit(data, "Error\n");
 			j++;
 		}
 		split_free(split);
 		i++;
 	}
 	if (ft_lstsize(data->a) <= 0)
-		ft_exit(data, printf("You have to input at least one number.\n"));
+		ft_exit(data, 0);
 	check_duplicates(data);
 }

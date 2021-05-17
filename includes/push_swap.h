@@ -6,7 +6,7 @@
 /*   By: alvrodri <alvrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:06:27 by alvrodri          #+#    #+#             */
-/*   Updated: 2021/05/16 13:31:40 by alvaro           ###   ########.fr       */
+/*   Updated: 2021/05/17 09:03:27 by alvrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int				exec_print_p(t_data *data, char *str);
 int				exec_print_rx(t_data *data, char *str);
 int				exec_print_rrx(t_data *data, char *str);
 
-void			ft_exit(t_data *data, int status);
+void			ft_exit(t_data *data, char *status);
 void			list_free(t_data *data);
 void			stack_print(t_list *list);
 void			print_instruction(t_data *data, char *instruction);
@@ -62,6 +62,14 @@ void			move_smallest_to_b(t_data *data);
 
 void			instruction_add(t_data *data, char *type);
 void			instructions_print(t_data *data);
+
+int				*get_ranges(t_data *data, int *numbers, int size, int n);
+void			bubble_sort(int *arr, int n);
+int				get_dir_closest_to_top(int n, t_list **list);
+void			pass_better_to_b(t_data *data, int x, int y);
+int				get_max_number(t_list *list);
+void			what_number_to_move_to_b(t_data *data, t_list
+					*first, t_list *second);
 
 void			sort_two(t_data *data);
 void			sort_three(t_data *data);

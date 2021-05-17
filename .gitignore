@@ -4,7 +4,7 @@
 *.pl
 *.sh
 *.o
-*.dSYM
+*.dSYM/
 push_swap
 checker
 extra/

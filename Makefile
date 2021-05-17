@@ -19,7 +19,9 @@ PUSH_SWAP_SRCS	=	srcs/push_swap.c \
 					srcs/instruction/reverse_rotate_instruction.c \
 					srcs/util/validation.c \
 					srcs/util/utils.c \
-					srcs/sort/sort_small.c srcs/sort/sort_large.c
+					srcs/sort/sort_small.c srcs/sort/sort_large.c \
+					srcs/sort/aux/sort_large_aux1.c srcs/sort/aux/sort_large_aux2.c \
+					srcs/sort/aux/sort_large_aux3.c
 
 GNL				=	./resources/get_next_line/get_next_line.c \
 					./resources/get_next_line/get_next_line_utils.c
@@ -39,11 +41,11 @@ all:			${CHECKER} ${PUSH_SWAP}
 
 ${CHECKER}:		${CHECKER_OBJS}
 				make bonus -C ./resources/libft/
-				gcc ${GNL} ${SANITIZE} ${CHECKER_OBJS} -L ./resources/libft/ -l ft -o ${CHECKER}
+				gcc ${GNL} ${CHECKER_OBJS} -L ./resources/libft/ -l ft -o ${CHECKER}
 
 ${PUSH_SWAP}:	${PUSH_SWAP_OBJS}
 				make bonus -C ./resources/libft/
-				gcc ${GNL} ${SANITIZE} ${PUSH_SWAP_OBJS} -L ./resources/libft/ -l ft -o ${PUSH_SWAP}
+				gcc ${GNL} ${PUSH_SWAP_OBJS} -L ./resources/libft/ -l ft -o ${PUSH_SWAP}
 
 clean:
 			rm -f ${PUSH_SWAP_OBJS}
